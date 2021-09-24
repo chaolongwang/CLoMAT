@@ -23,7 +23,7 @@ The script `heuristic_pairmatch.R`  can be placed in the working directory. The 
 
 ### 2.1  Download example data files
 
-For illustration purpose only, we created an example dataset based on [the 1000 Genomes Project]([1000 Genomes | A Deep Catalog of Human Genetic Variation (internationalgenome.org)](https://www.internationalgenome.org/)):
+For illustration purpose only, we created an example dataset based on [the 1000 Genomes Project](https://www.internationalgenome.org/):
 
 - **EUR.geno.vcf.gz** Genotype file in VCF format for variants extracted from exonic and intronic regions of 503 Europeans. 
 
