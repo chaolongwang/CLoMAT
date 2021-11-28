@@ -2,7 +2,7 @@
 
 Here we provide the data and scripts to reproduce the null and power simulations presented in the CLoMAT paper:
 
-* S Cheng\*, J Lyu\*, X Shi, K Wang, Z Wang, M Deng, B Sun#, C Wang#. Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression. Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression. *In revision*. (\* Co-first authors; # Corresponding authors)
+* S Cheng\*, J Lyu\*, X Shi, K Wang, Z Wang, M Deng, B Sun#, C Wang#. Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression.  *In revision*. (\* Co-first authors; # Corresponding authors)
 
 
 
