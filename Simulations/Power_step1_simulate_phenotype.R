@@ -31,7 +31,7 @@ IndexRef = match(RefPC[,1],Pool[,1]);
 #-----------------------------------------------------------------------------------------------------
 
 set.seed(8)
-ID = sample(1:10000,casenum,replace=FALSE)
+ID = sample(1:5000,casenum,replace=FALSE)
 
 maf = read.table(paste(DIR,"/data/AllMarkerAllIndividual.frq",sep=""),header=T);
 maf[,"SNP"] = as.character(as.matrix(maf[,"SNP"]));
@@ -46,7 +46,7 @@ logit <- function(x) {
 
 Gamma = log((casenum+200)/5000/(1-(casenum+200)/5000));
 
-ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".Info",sep=""));
+ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".Info",sep=""));
 
 for(loop in 1:loopindex){
 GeneSetID = ID[loop];

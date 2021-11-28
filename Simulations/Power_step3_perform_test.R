@@ -26,9 +26,9 @@ source(paste(DIR,"/SKATL.R",sep=""))
 
 #--Read in data files--------------------------------------------------------------------------------
 set.seed(8)
-ID = sample(1:10000,casenum,replace=FALSE)
+ID = sample(1:5000,casenum,replace=FALSE)
 
-ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".Info",sep=""));
+ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".Info",sep=""));
 #----------------------------------------------------------------------------------------------------
 
 

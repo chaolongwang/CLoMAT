@@ -48,9 +48,9 @@ CKAT.null <- CLRSKAT.null(MatchResultEucli2PC$Phenotype,X=NULL,S=MatchResultEucl
 #--Perform gene-based tests--------------------------------------------------------------------------
 wuweights <- function(maf) ifelse(maf>0, dbeta(maf,1,25), 0)
 
-ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_10000",".Info",sep=""));
+ssd_obj = Open_SSD(paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".SSD",sep=""), paste(DIR,"/data/BiRareMarkerAllIndividualGeneSet1_5000",".Info",sep=""));
 
-N.genes <- 10000;
+N.genes <- 5000;
 GeneIndex<- seq(1,N.genes,1)
 
 Burden = c();
