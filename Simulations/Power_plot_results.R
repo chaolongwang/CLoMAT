@@ -4,7 +4,7 @@ caliper = "pr95";
 Match = args[2];  #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
 casetype = args[3]; #options: "sharp" or "smooth" 
 type = args[4]; #options: "downsample" or "original"
-loopindex = args[5]; #This is an index for loop (Set at 1000 in the present simulation design).
+loopindex = as.numeric(args[5]); #This is an index for loop (Set at 1000 in the present simulation design).
 DIR = args[6] #the working directory 
 
 
@@ -33,7 +33,7 @@ total1 = cbind(Burden,CLR_Burden,SKAT,CLR_SKAT,Mist,CLR_Mist);
 dir.create(paste(DIR,"/plots",sep=""))
 
 #--draw barplot
-png(file=paste("./plots/Caliper",caliper,"Match",match,"casetype",casetype,"type",type,"barplot.png",sep=""),width=7,height=7,units="in",res=600);
+png(file=paste(DIR,"/plots/Caliper",caliper,"Match",Match,"casetype",casetype,"type",type,"barplot.png",sep=""),width=7,height=7,units="in",res=600);
 
 results1<-as.matrix(apply(total1,2,function(x) sum(x<2.5e-6,na.rm = T)/loopindex))
 full.res = t(results1)
