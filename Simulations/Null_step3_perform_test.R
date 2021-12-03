@@ -25,7 +25,7 @@ source(paste(DIR,"/SKATL.R",sep=""))
 
 
 #--Extract genotypes of cases and controls-----------------------------------------------------------
-MatchResultEucli2PC = read.table(paste(DIR,"/null_phenotypes_data/MatchResultEucli2PC_",casetype,"_Match",Match,"_cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",header=T);
+MatchResultEucli2PC = read.table(paste(DIR,"/null_phenotypes_data_",casetype,"/MatchResultEucli2PC_",casetype,"_Match",Match,"_cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",header=T);
 
 FamInfo = Read_Plink_FAM(paste(DIR,"/data/BiRareMarkerAllIndividual",".fam",sep=""), Is.binary=TRUE, flag1=0);
 FamInfo[,c(1,2)] = as.character(as.matrix(FamInfo[,c(1,2)]));

@@ -23,7 +23,7 @@ IndexCont = scan(file= paste(DIR,"/null_controls_",casetype,"/control",loop,".tx
 IndexCase = sample(IndexCase, as.numeric(casenum));
 Cont_all = IndexCont;
 
-if (loop==1) {dir.create(paste(DIR,"/null_phenotypes_data",sep=""))}
+if (loop==1) {dir.create(paste(DIR,"/null_phenotypes_data_",casetype,sep=""))}
 #------------------------------------------------------------------------------------------------------
 
 
@@ -114,7 +114,7 @@ Factor = unique(as.character(MatchResultEucli2PC[,"EucliMatch"]));
 Factor = cbind(Factor,seq(1,length(Factor)));
 Index = match(MatchResultEucli2PC[,"EucliMatch"],Factor[,1]);
 MatchResultEucli2PC[,"EucliMatch"] = Factor[Index,2];
-write.table(MatchResultEucli2PC,file=paste(DIR,"/null_phenotypes_data/MatchResultEucli2PC_",casetype,"_Match",Match,"_cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",col.names=T,row.names=F,quote=F);
+write.table(MatchResultEucli2PC,file=paste(DIR,"/null_phenotypes_data_",casetype,"/MatchResultEucli2PC_",casetype,"_Match",Match,"_cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",col.names=T,row.names=F,quote=F);
 #------------------------------------------------------------------------------------------------------
 
 

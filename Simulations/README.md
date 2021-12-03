@@ -73,6 +73,11 @@ To reproduce the simulations presented in the paper, please run the following *b
 - `Run_null_simulations.sh`: commands to reproduce the null simulations.
 - `Run_power_simulations.sh`: commands to reproduce the power simulations.
 
+Results can be visualized by running the following *R* scripts.
+
+- `Null_plot_results.R`: generate QQ plots for type 1 error evaluation under the null model.
+- `Power_plot_results.R`: generate bar plots for power comparison under the alternative model.
+
 
 
  ## 5. Contact information

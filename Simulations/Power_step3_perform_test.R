@@ -6,13 +6,15 @@ set.seed(8)
 
 #--Parameters for input------------------------------------------------------------------------------
 args = commandArgs(T);
-
-Match = args[1]; #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
+CausalPercent = as.numeric(args[1]) #0.2; 0.5
+PositivePercent = as.numeric(args[2]) #0.8; 1.0
+Constant = as.numeric(args[3]) #0.877; 0.555
+Match = args[4]; #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
 casenum = 1000 #sample size of cases (1000)
-casetype = args[2] #options: "sharp" or "smooth" 
+casetype = args[5] #options: "sharp" or "smooth" 
 caliper = "pr95" 
-DIR=args[3] #the working directory 
-loopindex = as.numeric(args[4]); #This is an index for loop (Set at 1000 in the present simulation design).
+DIR=args[6] #the working directory 
+loopindex = as.numeric(args[7]); #This is an index for loop (Set at 1000 in the present simulation design).
 #----------------------------------------------------------------------------------------------------
 
 
@@ -40,7 +42,7 @@ for(loop in 1:loopindex){
 	wuweights <- function(maf) ifelse(maf>0, dbeta(maf,1,25), 0)
 
 	#--Extract genotypes of cases and controls---------------------------------------------------------
-	MatchResultEucli2PC = read.table(paste(DIR,"/power_phenotypes_data/MatchResultEucli2PCForMatch",Match,"cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",header=T);
+	MatchResultEucli2PC = read.table(paste(DIR,"/power_phenotypes_data_",casetype,"/MatchResultEucli2PCForMatch",Match,"cali_",caliper,"_",CausalPercent,"_",PositivePercent,"_loop",loop,".txt",sep=""),sep="\t",header=T);
 
 	MatchResultEucli2PC[,"EucliMatch"] = as.factor(MatchResultEucli2PC[,"EucliMatch"]);
 	MatchID = match(MatchResultEucli2PC[,"popID"]+1,seq(1,dim(GenoMatrix)[1]));
@@ -109,7 +111,7 @@ for(loop in 1:loopindex){
 }
 
 dir.create(paste(DIR,"/power_output_downsample_",casetype,sep=""))
-write.table(result,file=paste(DIR,"/power_output_downsample_",casetype,"/CLR_boot_","caliper_",caliper,"NullModel_match",Match,"c1000_exact_ptem.txt",sep=""),sep="\t",quote=F,col.names=F,row.names=F)
+write.table(result,file=paste(DIR,"/power_output_downsample_",casetype,"/CLR_boot_","caliper_",caliper,"PowerModel_match",Match,"_",CausalPercent,"_",PositivePercent,"c1000_exact_ptem.txt",sep=""),sep="\t",quote=F,col.names=F,row.names=F)
 #----------------------------------------------------------------------------------------------------
 
 Close_SSD()

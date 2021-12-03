@@ -6,13 +6,15 @@ set.seed(8)
 
 #--Parameters for input--------------------------------------------------------------------------------
 args = commandArgs(T);
-
-Match = args[1]; #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
-loop = as.numeric(args[2]); #This is an index for loop (1:1000).
-casetype = args[3] #options: "sharp" or "smooth" 
+CausalPercent = as.numeric(args[1]) #0.2; 0.5
+PositivePercent = as.numeric(args[2]) #0.8; 1.0
+Constant = as.numeric(args[3]) #0.877; 0.555
+Match = args[4]; #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
+loop = as.numeric(args[5]); #This is an index for loop (1:1000).
+casetype = args[6] #options: "sharp" or "smooth" 
 casenum = 1000  #sample size of cases (1000)
 caliper = "pr95"
-DIR=args[4] #the working directory 
+DIR=args[7] #the working directory 
 #-------------------------------------------------------------------------------------------------------
 
 
@@ -21,11 +23,11 @@ library(optmatch);
 source(paste(DIR,"/pairmatch.R",sep="")) 
 #---------------------------------------------------------------------------------------------------------
 
-if (loop==1) {dir.create(paste(DIR,"/power_phenotypes_data",sep=""))}
+if (loop==1) {dir.create(paste(DIR,"/power_phenotypes_data_",casetype,sep=""))}
 
 #--Read in files----------------------------------------------------------------------------------------
-Casepool = scan(file= paste(DIR,"/power_cases_",casetype,"/case",loop,".txt",sep=""))
-all_controls = scan(file= paste(DIR,"/power_controls_",casetype,"/control",loop,".txt",sep=""))
+Casepool = scan(file= paste(DIR,"/power_cases_",casetype,"/case_",CausalPercent,"_",PositivePercent,"_",loop,".txt",sep=""))
+all_controls = scan(file= paste(DIR,"/power_controls_",casetype,"/control_",CausalPercent,"_",PositivePercent,"_",loop,".txt",sep=""))
 IndexCase = sample(Casepool, casenum);
 
 Pool = read.table(paste(DIR,"/data/M10.20x20.20000.1M.ProPC.coord",sep=""),header=T);
@@ -109,6 +111,6 @@ Factor = unique(as.character(MatchResultEucli2PC[,"EucliMatch"]));
 Factor = cbind(Factor,seq(1,length(Factor)));
 Index = match(MatchResultEucli2PC[,"EucliMatch"],Factor[,1]);
 MatchResultEucli2PC[,"EucliMatch"] = Factor[Index,2];
-write.table(MatchResultEucli2PC,file=paste(DIR,"/power_phenotypes_data/MatchResultEucli2PCForMatch",Match,"cali_",caliper,"_loop_",loop,".txt",sep=""),sep="\t",col.names=T,row.names=F,quote=F);
+write.table(MatchResultEucli2PC,file=paste(DIR,"/power_phenotypes_data_",casetype,"/MatchResultEucli2PCForMatch",Match,"cali_",caliper,"_",CausalPercent,"_",PositivePercent,"_loop",loop,".txt",sep=""),sep="\t",col.names=T,row.names=F,quote=F);
 #------------------------------------------------------------------------------------------------------
 

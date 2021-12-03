@@ -1,11 +1,11 @@
 args = commandArgs(T);
 
 caliper = "pr95"; 
-Match = args[2];  #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
-casetype = args[3]; #options: "sharp" or "smooth" 
-type = args[4]; #options: "downsample" or "original"
-loopindex = as.numeric(args[5]); #This is an index for loop (Set at 1000 in the present simulation design).
-DIR = args[6] #the working directory 
+Match = args[1];  #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
+casetype = args[2]; #options: "sharp" or "smooth" 
+type = args[3]; #options: "downsample" or "original"
+loopindex = as.numeric(args[4]); #This is an index for loop (Set at 1000 in the present simulation design).
+DIR = args[5] #the working directory 
 
 
 SKAT <- c()
@@ -35,7 +35,7 @@ total = cbind(SKAT,CLR_SKAT,Burden,CLR_Burden,Mist,CLR_Mist);
 dir.create(paste(DIR,"/plots",sep=""))
 
 #--draw qqplot
-png(file=paste(DIR,"/plots/Caliper",caliper,"Match",match,"casetype",casetype,"type",type,"QQplot.png",sep=""),width=7,height=7,units="in",res=600);
+png(file=paste(DIR,"/plots/Caliper",caliper,"Match",Match,"casetype",casetype,"type",type,"QQplot.png",sep=""),width=7,height=7,units="in",res=600);
 par(mgp=c(3.8,1,0), mai=c(1,1.2,0.1,0.1))
 match.loose <- function(a, b) sapply(a, function(x) b[which.min(abs(x-b))])
 cols <- c("pink2","red","skyblue","blue","yellow2", "orange");

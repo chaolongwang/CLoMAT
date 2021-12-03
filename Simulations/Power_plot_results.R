@@ -1,11 +1,13 @@
 args = commandArgs(T);
 
 caliper = "pr95"; 
-Match = args[2];  #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
-casetype = args[3]; #options: "sharp" or "smooth" 
-type = args[4]; #options: "downsample" or "original"
-loopindex = as.numeric(args[5]); #This is an index for loop (Set at 1000 in the present simulation design).
-DIR = args[6] #the working directory 
+CausalPercent = as.numeric(args[1]) #0.2; 0.5
+PositivePercent = as.numeric(args[2]) #0.8; 1.0
+Match = args[3];  #This will be "fullmatch" or integer. Integer means performing matching with 1:n.
+casetype = args[4]; #options: "sharp" or "smooth" 
+type = args[5]; #options: "downsample" or "original"
+loopindex = as.numeric(args[6]); #This is an index for loop (Set at 1000 in the present simulation design).
+DIR = args[7] #the working directory 
 
 
 SKAT <- c()
@@ -16,7 +18,7 @@ Mist <- c()
 CLR_Mist <- c() 
 
 #--read in files
-  SKAT_File <- paste(DIR,"/power_output_downsample_",casetype,"/CLR_boot_","caliper_",caliper,"NullModel_match",Match,"c1000_exact_ptem.txt",sep="");
+  SKAT_File <- paste(DIR,"/power_output_downsample_",casetype,"/CLR_boot_","caliper_",caliper,"PowerModel_match",Match,"_",CausalPercent,"_",PositivePercent,"c1000_exact_ptem.txt",sep="");
   
   if (file.exists(SKAT_File)) {
     skat_table <- read.table(SKAT_File)
@@ -33,7 +35,7 @@ total1 = cbind(Burden,CLR_Burden,SKAT,CLR_SKAT,Mist,CLR_Mist);
 dir.create(paste(DIR,"/plots",sep=""))
 
 #--draw barplot
-png(file=paste(DIR,"/plots/Caliper",caliper,"Match",Match,"casetype",casetype,"type",type,"barplot.png",sep=""),width=7,height=7,units="in",res=600);
+png(file=paste(DIR,"/plots/Caliper",caliper,"Match",Match,"casetype",casetype,type,"_",CausalPercent,"_",PositivePercent,"barplot.png",sep=""),width=7,height=7,units="in",res=600);
 
 results1<-as.matrix(apply(total1,2,function(x) sum(x<2.5e-6,na.rm = T)/loopindex))
 full.res = t(results1)

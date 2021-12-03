@@ -120,8 +120,8 @@ IndexRare = match(colnames(GenoMatrix),maf[,"SNP"]);
 	caseids = setdiff(which(Pheno==1),IndexRef)-1		
 	contids = setdiff(which(Pheno==0),IndexRef)-1
 	
-	write(caseids,file=paste(DIR,"/power_cases_",casetype,"/case",loop,".txt",sep=""))
-	write(contids,file=paste(DIR,"/power_controls_",casetype,"/control",loop,".txt",sep=""))
+	write(caseids,file=paste(DIR,"/power_cases_",casetype,"/case_",CausalPercent,"_",PositivePercent,"_",loop,".txt",sep=""))
+	write(contids,file=paste(DIR,"/power_controls_",casetype,"/control_",CausalPercent,"_",PositivePercent,"_",loop,".txt",sep=""))
 }
 
 Close_SSD()
