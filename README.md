@@ -19,6 +19,8 @@ The script `heuristic_pairmatch.R`  can be placed in the working directory. The 
 - **WK_DIR**: the working directory for running tests.
 - **EPACTS_DIR**: the installation directory of EPACTS. 
 
+
+
 ## 2. Example
 
 ### 2.1  Download example data files
@@ -188,3 +190,7 @@ The example output of **CLR-MiST**:
 - Burden_STAT: Q statistic from CLR-Burden test.
 - SKAT_PVAL: *P* value from CLR-SKAT test (regressing out genetic burden).
 - SKAT_STAT: Q statistic from CLR-SKAT test (regressing out genetic burden).
+
+## 3. Reference
+
+* S Cheng\*, J Lyu\*, X Shi, K Wang, Z Wang, M Deng, B Sun#, C Wang#. Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression. *Briefings in Bioinformatics*, in press. (\* Co-first authors; # Corresponding authors)
