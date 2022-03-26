@@ -191,6 +191,6 @@ The example output of **CLR-MiST**:
 - SKAT_PVAL: *P* value from CLR-SKAT test (regressing out genetic burden).
 - SKAT_STAT: Q statistic from CLR-SKAT test (regressing out genetic burden).
 
-## 3. Reference
+## 3. Citation
 
-* S Cheng\*, J Lyu\*, X Shi, K Wang, Z Wang, M Deng, B Sun#, C Wang#. Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression. *Briefings in Bioinformatics*, in press. (\* Co-first authors; # Corresponding authors)
+* S Cheng\*, J Lyu\*, X Shi, K Wang, Z Wang, M Deng, B Sun#, C Wang#. [Rare variant association tests for ancestry-matched case-control data based on conditional logistic regression](https://doi.org/10.1093/bib/bbab572). *Briefings in Bioinformatics*, 2022, 23(2): bbab572. (\* Co-first authors; # Corresponding authors)
